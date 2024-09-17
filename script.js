@@ -117,13 +117,19 @@ const renderSongs = (array) => {
     playlistSongs.innerHTML = songsHTML;
 };
 
+const getCurrentSongIndex = () => {
+    return userData?.songs.indexOf(userData?.currentSong)
+}
+
 playButton.addEventListener("click", () => {
     if (!userData?.currentSong) {
         playSong(userData?.songs[0].id);
     } else {
         playSong(userData?.currentSong.id);
     }
-})
+});
+
+pauseButton.addEventListener("click", pauseSong);
 
 const sortSongs = () => {
     userData?.songs.sort((a, b) => {
